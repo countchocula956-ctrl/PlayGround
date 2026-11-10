@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#071b26" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23071b26'/%3E%3Cpath d='M32 8v44M32 12l18 25H32M28 52h24M16 42h32' stroke='%23d6b66e' stroke-width='4' fill='none'/%3E%3C/svg%3E" />
+  <title>Salt &amp; Powder — Age of Sail</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Marcellus&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="world" aria-label="3D ocean world"></canvas>
+    <div class="vignette"></div>
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Salt and Powder home"><span class="brand-mark">✳</span><span>SALT <i>&amp;</i> POWDER<small>THE AGE OF SAIL</small></span></a>
+      <div class="world-label"><span class="live-dot"></span><span id="weather-label">TRADE WINDS</span><b>·</b><span id="region-label">THE SAPPHIRE REACH</span></div>
+      <div class="top-resources"><span>◈ <b id="gold">240</b> <small>GOLD</small></span><span>⌁ <b id="wood">35</b> <small>TIMBER</small></span><span>✦ <b id="rep">12</b> <small>RENOWN</small></span></div>
+      <button class="icon-btn" id="sound-btn" title="Toggle sound">♫</button>
+    </header>
+    <section class="left-rail">
+      <div class="ship-card glass"><div class="ship-card-head"><span>YOUR VESSEL</span><button id="customize-btn" class="text-action">REFIT ↗</button></div><div class="ship-title" id="ship-name">The Wayward</div><div class="ship-class" id="ship-type">BRIGANTINE <span>·</span> LVL 2</div>
+        <div class="hull-row"><span>HULL</span><div class="meter"><i id="hull-bar"></i></div><b id="hull-text">86%</b></div><div class="hull-row"><span>SAILS</span><div class="meter sail-meter"><i id="sail-bar"></i></div><b id="sail-text">100%</b></div>
+        <div class="ship-stats"><span><small>SPEED</small><b id="speed-value">74</b></span><span><small>ARMOR</small><b id="armor-value">42</b></span><span><small>GUNS</small><b id="guns-value">6</b></span></div>
+      </div>
+      <div class="objective glass"><span class="eyebrow">CURRENT VOYAGE <i>01</i></span><h2 id="quest-title">A Debt of<br>Black Powder</h2><p id="quest-copy">The Crown has put a price on your head. Find a port, trade for supplies, and make the hunters regret it.</p><div class="objective-progress"><span id="quest-progress">◉  Sink the Royal patrol</span><span id="quest-count">0 / 1</span></div></div>
+      <div class="nearby glass"><div class="nearby-title"><span>ON THE HORIZON</span><span class="pulse-ring"></span></div><div id="target-readout">No hostile ships sighted</div><div class="compass"><span class="compass-n">N</span><span class="compass-dot"></span><span class="compass-line"></span></div><div class="island-hint" id="island-hint">Sail toward an island to make port</div></div>
+    </section>
+    <section class="right-rail">
+      <div class="weapon-card glass"><div class="eyebrow">STARBOARD BATTERY</div><div class="weapon-name"><span class="weapon-icon">◉</span><span id="weapon-label">IRON CANNONS<small>LONG NINE · BROADSIDE</small></span></div><div class="ammo-row"><span>ROUND SHOT</span><div class="ammo-dots" id="ammo-dots"><i></i><i></i><i></i><i></i><i></i></div><b id="ammo-count">5</b></div><div class="reload-track"><i id="reload-bar"></i></div><div class="weapon-note" id="weapon-note">Broadside loaded <span>·</span> <kbd>SPACE</kbd> FIRE</div></div>
+      <div class="wind-card glass"><div class="wind-top"><span>WIND &amp; SEA</span><span id="wind-dir">NW ↗ 18 kn</span></div><div class="wind-viz"><div class="wind-arrow" id="wind-arrow">➤</div><div class="wind-ticks"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div><div class="sea-state"><span>SEA STATE</span><b id="sea-state">CALM</b><span class="sea-dashes">━ ━ ━ ━ ━</span></div></div>
+      <div class="log-card glass"><div class="eyebrow">CAPTAIN'S LOG <span>LIVE</span></div><div id="log-lines"><p><b>08:14</b> A fair wind fills the sails.</p><p><b>08:12</b> Welcome to the Sapphire Reach.</p></div></div>
+    </section>
+    <div class="bottom-hud"><div class="controls glass"><span class="control-label">HELM</span><span><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> <small>SAIL &amp; STEER</small></span><span><kbd>SPACE</kbd> <small>FIRE BROADSIDE</small></span><span><kbd>E</kbd> <small>INTERACT</small></span><span><kbd>SHIFT</kbd> <small>FULL SAIL</small></span></div><div class="speedometer glass"><span class="speed-number" id="speed-number">0.0</span><span class="speed-unit">KN</span><div class="speed-gauge"><i id="speed-gauge"></i></div></div></div>
+    <div id="toast" class="toast"></div>
+    <div id="modal-backdrop" class="modal-backdrop hidden"><section class="modal glass" id="modal"></section></div>
+    <div class="crosshair" id="crosshair"><i></i><b></b></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
